@@ -1,0 +1,6 @@
+name: KotlinLoader
+version: 1.0
+descrption: Plugin allows to load plugin in kotlin!
+author: Otekplay
+main: pl.otekplay.loader.LoaderPlugin
+depend: ['ProtocolLib']

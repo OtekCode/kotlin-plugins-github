@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>kotlin-plugins</artifactId>
+        <groupId>pl.otekplay</groupId>
+        <version>0.0.1</version>
+        <relativePath>../pom.xml</relativePath>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>kotlin-plugin-api</artifactId>
+
+    <dependencies>
+        <dependency>
+            <groupId>pl.otekplay</groupId>
+            <artifactId>kotlin-plugin-util</artifactId>
+            <version>0.0.1</version>
+        </dependency>
+        <dependency>
+            <groupId>pl.otekplay</groupId>
+            <artifactId>kotlin-menu-api</artifactId>
+            <version>0.0.1</version>
+        </dependency>
+        <dependency>
+            <groupId>co.aikar</groupId>
+            <artifactId>acf-bukkit</artifactId>
+            <version>0.5.0-SNAPSHOT</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>3.0.2</version>
+                <configuration>
+                    <outputDirectory>${user.home}/Desktop/server/api</outputDirectory>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>

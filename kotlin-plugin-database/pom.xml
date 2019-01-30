@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>kotlin-plugins</artifactId>
+        <groupId>pl.otekplay</groupId>
+        <version>0.0.1</version>
+        <relativePath>../pom.xml</relativePath>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>kotlin-plugin-database</artifactId>
+
+    <dependencies>
+        <dependency>
+            <groupId>pl.otekplay</groupId>
+            <artifactId>kotlin-plugin-api</artifactId>
+            <version>0.0.1</version>
+        </dependency>
+
+
+        <dependency>
+            <groupId>org.mongodb</groupId>
+            <artifactId>mongodb-driver-async</artifactId>
+            <version>3.6.1</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-shade-plugin</artifactId>
+                <version>3.0.0</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>shade</goal>
+                        </goals>
+                        <configuration>
+                            <artifactSet>
+                                <includes>
+                                    <!-- Aikar libraries -->
+                                    <include>joda-parsedTime:joda-parsedTime</include>
+
+                                    <!-- Datasources libraries -->
+                                    <include>redis.clients:jedis</include>
+                                    <include>org.apache.commons:commons-pool2</include>
+                                    <include>org.mongodb:mongodb-driver-async</include>
+                                    <include>org.mongodb:mongodb-driver-core</include>
+                                    <include>org.mongodb:bson</include>
+
+                                    <!-- Project dependencies -->
+                                    <include>pl.otekplay:kotlin-plugin-api</include>
+                                </includes>
+                            </artifactSet>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+</project>

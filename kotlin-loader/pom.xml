@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>kotlin-plugins</artifactId>
+        <groupId>pl.otekplay</groupId>
+        <version>0.0.1</version>
+        <relativePath>../pom.xml</relativePath>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>kotlin-loader</artifactId>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.google.code.gson</groupId>
+            <artifactId>gson</artifactId>
+            <version>2.8.5</version>
+        </dependency>
+        <dependency>
+            <groupId>pl.otekplay</groupId>
+            <artifactId>kotlin-plugin-api</artifactId>
+            <version>0.0.1</version>
+        </dependency>
+        <dependency>
+            <groupId>pl.otekplay</groupId>
+            <artifactId>kotlin-plugin-util</artifactId>
+            <version>0.0.1</version>
+        </dependency>
+        <dependency>
+            <groupId>pl.otekplay</groupId>
+            <artifactId>kotlin-menu-api</artifactId>
+            <version>0.0.1</version>
+        </dependency>
+        <dependency>
+            <groupId>co.aikar</groupId>
+            <artifactId>acf-paper</artifactId>
+            <version>0.5.0-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>co.aikar</groupId>
+            <artifactId>acf-bukkit</artifactId>
+            <version>0.5.0-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>co.aikar</groupId>
+            <artifactId>acf-core</artifactId>
+            <version>0.5.0-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>co.aikar</groupId>
+            <artifactId>Table</artifactId>
+            <version>1.0.0-SNAPSHOT</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>co.aikar</groupId>
+            <artifactId>locales</artifactId>
+            <version>1.0-SNAPSHOT</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>net.jodah</groupId>
+            <artifactId>expiringmap</artifactId>
+            <version>0.5.8</version>
+            <scope>compile</scope>
+        </dependency>
+
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>3.0.2</version>
+                <configuration>
+                    <outputDirectory>${user.home}/Desktop/server/plugins</outputDirectory>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-shade-plugin</artifactId>
+                <version>3.0.0</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>shade</goal>
+                        </goals>
+                        <configuration>
+                            <artifactSet>
+                                <includes>
+                                    <!-- Kotlin runtime -->
+                                    <include>org.jetbrains.kotlinx:kotlinx-coroutines-core</include>
+                                    <include>org.jetbrains.kotlin:kotlin-stdlib-jdk8</include>
+                                    <include>org.jetbrains.kotlin:kotlin-reflect</include>
+                                    <include>org.jetbrains.kotlin:kotlin-stdlib</include>
+
+                                    <!-- Aikar libraries -->
+                                    <include>co.aikar:minecraft-timings</include>
+                                    <include>co.aikar:acf-paper</include>
+                                    <include>co.aikar:acf-bukkit</include>
+                                    <include>co.aikar:acf-core</include>
+                                    <include>co.aikar:locales</include>
+                                    <include>co.aikar:Table</include>
+                                    <include>co.aikar:DelegatingMap</include>
+
+                                    <!-- Useful libraries -->
+                                    <include>net.jodah:expiringmap</include>
+
+                                    <!-- Project dependencies -->
+                                    <include>pl.otekplay:kotlin-menu-api</include>
+                                    <include>pl.otekplay:kotlin-plugin-api</include>
+                                    <include>pl.otekplay:kotlin-plugin-util</include>
+                                </includes>
+                            </artifactSet>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+</project>
